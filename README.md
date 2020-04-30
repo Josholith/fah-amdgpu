@@ -24,12 +24,7 @@ to be able to resume a container should we have to stop it for
 unrelated reasons (like a reboot).
 
 ```sh
-docker run -d \
---device=/dev/dri \
---security-opt seccomp=unconfined \
--v `pwd`/config.xml:/home/fah/config.xml:ro \
---name fah \
-fah
+docker run -d --device=/dev/dri -v `pwd`/config.xml:/home/fah/config.xml:ro --name fah fah-amdgpu
 ```
 
 ## Monitoring
@@ -72,7 +67,7 @@ You may find it useful to install the `rocm-smi` tool to check current power use
 ## Troubleshooting
 To get an interactive shell to poke around:
 ```sh
-docker run --rm -it --device=/dev/dri --security-opt seccomp=unconfined fah-amdgpu bash
+docker run --rm -it --device=/dev/dri fah-amdgpu bash
 ```
 Useful commands from the interactive container ...
 * List OpenCL devices
