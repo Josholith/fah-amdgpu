@@ -1,0 +1,9 @@
+<config>
+  <user value="Github"/>
+  <team value="262568"/>
+
+  <power value="medium"/>
+  <gpu value="true"/>
+
+  <slot id="0" type="GPU"/>
+</config>
