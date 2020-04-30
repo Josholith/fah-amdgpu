@@ -72,7 +72,7 @@ You may find it useful to install the `rocm-smi` tool to check current power use
 ## Troubleshooting
 To get an interactive shell to poke around:
 ```sh
-docker run --rm -it --device=/dev/dri --security-opt seccomp=unconfined fah bash
+docker run --rm -it --device=/dev/dri --security-opt seccomp=unconfined fah-amdgpu bash
 ```
 Useful commands from the interactive container ...
 * List OpenCL devices
