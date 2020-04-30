@@ -1,6 +1,6 @@
 # Folding@Home Client for Docker using AMD GPU ####
 
-This project builds a Docker image for running the Folding@Home Client as a Docker Container with access to the host system's AMD GPU.  By design, this container does GPU only folding (no CPU folding).
+This project builds a Docker image for running the [Folding@Home](https://foldingathome.org/) Client in headless mode as a Docker Container with access to the host system's AMD GPU.  By design, this container does GPU only folding (no CPU folding).
 
 Specifically this has been tested on my environment:
 * Arch Linux host with 5.6.7 kernel
@@ -17,7 +17,7 @@ docker image ls --filter reference=fah-amdgpu
 
 ## Running
 To run the container image as a Docker container to do some folding
-* Here we are bind mounting a config.xml file into the container.
+* Here we are bind mounting a `config.xml` file into the container.
 * Specifically not starting the container with the `--rm` flag since F@H work units
 can be resumed as they save state checkpoints to disk. So we want
 to be able to resume a container should we have to stop it for
@@ -58,8 +58,7 @@ With GPU folding, there don't seem to be good F@H client options for throttling 
 
 This is not a problem though, since in practice it's more elegant to just set a TDP (power) cap for your AMD GPU.
 
-My RX 580 has a default power cap of 135 W.  The power cap can be changed dynamically without any special toole.
-docker image ls --filter reference=fah-amdgpu
+My RX 580 has a default power cap of 135 W.  The power cap can be changed dynamically via sysfs without any special tools.
 
 Example: To change the power cap to 50 W (50,000,000 μW)
 ```sh
