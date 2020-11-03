@@ -3,7 +3,7 @@
 This project builds a Docker image for running the [Folding@Home](https://foldingathome.org/) Client in headless mode as a Docker Container with access to the host system's AMD GPU.  By design, this container does GPU only folding (no CPU folding).
 
 Specifically this has been tested on my environment:
-* Arch Linux host with 5.6.7 kernel
+* Arch Linux host with 5.6.7 and 5.9.2 kernels
 * AMD RX 580 GPU with open source `amdgpu` kernel driver on the host
 
 ## Building the docker image locally
@@ -55,13 +55,12 @@ This is not a problem though, since in practice it's more elegant to just set a 
 
 My RX 580 has a default power cap of 135 W.  The power cap can be changed dynamically via sysfs without any special tools.
 
-Example: To change the power cap to 50 W (50,000,000 μW)
+Example: To change the power cap to 50 W (50,000,000 μW), on the host (not in the container),
 ```sh
-# (As root)
-echo 50000000 > /sys/class/drm/card0/device/hwmon/hwmon1/power1_cap
+echo 50000000 | sudo tee /sys/class/drm/card0/device/hwmon/hwmon1/power1_cap
 ```
 
-You may find it useful to install the `rocm-smi` tool to check current power use.
+You may find it useful to install the `rocm-smi` tool on the host to check current power use.
 
 
 ## Troubleshooting
