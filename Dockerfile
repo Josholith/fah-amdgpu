@@ -24,11 +24,6 @@ RUN apt-get install -y clinfo-amdgpu-pro opencl-orca-amdgpu-pro-icd ocl-icd-libo
 # Cleanup
 RUN rm -rf /etc/apt/sources.list.d/amdgpu-pro.list /opt/amdgpu-pro-repo
 
-# Install the AMDGPU userland driver
-#RUN cd /tmp/amdgpu-pro-${AMDGPU_PRO_VERSION} && \
-#    ./amdgpu-pro-install -y --no-dkms --opencl=legacy,pal && \
-#    rm -r /tmp/amdgpu-pro-${AMDGPU_PRO_VERSION}
-
 # Fetch the F@H Client
 RUN wget -qO /tmp/fah.deb https://download.foldingathome.org/releases/public/release/fahclient/debian-stable-64bit/v${FAH_CLIENT_MAJOR_V}/fahclient_${FAH_CLIENT_VERSION}_amd64.deb
 

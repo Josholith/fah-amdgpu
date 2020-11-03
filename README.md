@@ -43,7 +43,7 @@ docker start fah
 ```
 
 ## Purge/cleanup
-Warning: F@H uses checkpoints to save progress on folding Work Units (WU) and credit for work is only granted at completion of the WU. Removing the container will wipe out checkpoints, so whatever progress was made on current WUs will be lost.
+*Warning:* F@H uses checkpoints to save progress on folding Work Units (WU) and credit for work is only granted at completion of the WU. Removing the container will wipe out checkpoints, so whatever progress was made on current WUs will be lost.
 ```
 docker rm -f fah
 ```
@@ -55,7 +55,7 @@ This is not a problem though, since in practice it's more elegant to just set a 
 
 My RX 580 has a default power cap of 135 W.  The power cap can be changed dynamically via sysfs without any special tools.
 
-Example: To change the power cap to 50 W (50,000,000 μW), on the host (not in the container),
+**Example:** To change the power cap to 50 W (50,000,000 μW), on the host (not in the container),
 ```sh
 echo 50000000 | sudo tee /sys/class/drm/card0/device/hwmon/hwmon1/power1_cap
 ```
@@ -68,12 +68,13 @@ To get an interactive shell to poke around:
 ```sh
 docker run --rm -it --device=/dev/dri fah-amdgpu bash
 ```
+
 Useful commands from the interactive container ...
 * List OpenCL devices
-```
-clinfo -l
-```
-* Check Folding@Home Client configuration (mostly looking for it to show GPU count > 0)
-```
-FAHClient --info
-```
+    ```
+    clinfo -l
+    ```
+* Check Folding@Home Client configuration (confirming GPU count > 0)
+    ```
+    FAHClient --info
+    ```
